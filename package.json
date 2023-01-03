@@ -27,7 +27,17 @@
         "mac": "alt+r",
         "when": "resourceLangId == vue"
       }
-    ]
+    ],
+    "configuration": {
+        "title": "Remove Unused Vue Code",
+        "properties": {
+            "remove-unused-vue-code.ignoreStylePrefix": {
+                "type": "string",
+                "default": "-",
+                "description": "ignore style prefix name like 'el-', split by space"
+            }
+        }
+    }
   },
   "scripts": {
     "lint": "eslint .",
