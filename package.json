@@ -1,8 +1,8 @@
 {
   "name": "remove-unused-vue-code",
   "displayName": "Remove Unused Vue Code",
-  "description": "remove unused vue code",
-  "version": "0.0.1",
+  "description": "remove unused data , method variables and style code for vue2",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.68.0"
   },
@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "remove-unused-vue-code.remove-unused-code",
-        "title": "Remove Unused Vue Code"
+        "title": "remove unused data , method variables and style code"
       }
     ],
     "keybindings": [
@@ -34,7 +34,7 @@
             "remove-unused-vue-code.ignoreStylePrefix": {
                 "type": "string",
                 "default": "-",
-                "description": "ignore style prefix name like 'el-', split by space"
+                "description": "ignore style prefix name like 'el- van-' which is splited by space"
             }
         }
     }
