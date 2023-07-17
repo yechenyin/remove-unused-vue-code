@@ -1,18 +1,16 @@
 {
   "name": "remove-unused-vue-code",
-  "displayName": "Remove Unused Vue Code",
+  "displayName": "remove-unused-vue-code",
   "description": "remove unused data , method variables and style code for vue2",
   "version": "0.0.5",
   "engines": {
-    "vscode": "^1.68.0"
+    "vscode": "^1.79.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:remove-unused-vue-code.remove-unused-code"
-  ],
-  "main": "./extension.js",
+  "activationEvents": [],
+  "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
@@ -24,42 +22,49 @@
       {
         "command": "remove-unused-vue-code.remove-unused-code",
         "key": "alt+r",
-        "mac": "alt+r",
+        "mac": "cmd+r",
         "when": "resourceLangId == vue"
       }
     ],
     "configuration": {
-        "title": "Remove Unused Vue Code",
-        "properties": {
-            "remove-unused-vue-code.ignoreStylePrefix": {
-                "type": "string",
-                "default": "-",
-                "description": "ignore style prefix name like 'el- van-' which is splited by space"
-            }
+      "title": "Remove Unused Vue Code",
+      "properties": {
+        "remove-unused-vue-code.ignoreStylePrefix": {
+          "type": "string",
+          "default": "-",
+          "description": "ignore style prefix name like 'el- van-' which is splited by space"
         }
+      }
     }
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "yarn run lint",
-    "test": "node ./test/runTest.js"
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.4",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "14.x",
-    "@types/vscode": "^1.63.0",
-    "@vscode/test-electron": "^1.6.2",
-    "eslint": "^8.1.0",
-    "glob": "^7.1.7",
-    "mocha": "^9.1.3",
-    "typescript": "^4.4.4"
+    "@types/vscode": "^1.79.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3",
+    "@vscode/test-electron": "^2.3.2"
   },
   "dependencies": {
-    "@babel/generator": "^7.16.5",
-    "@babel/parser": "^7.16.6",
-    "@babel/traverse": "^7.16.5",
+    "@babel/core": "^7.22.8",
+    "@babel/generator": "^7.22.7",
+    "@babel/parser": "^7.22.7",
+    "@babel/traverse": "^7.22.8",
     "@babel/types": "^7.16.0",
+    "@types/babel__core": "^7.20.1",
     "vue-template-compiler": "^2.7.10"
   },
   "repository": "https://github.com/yechenyin/remove-unused-vue-code.git",
